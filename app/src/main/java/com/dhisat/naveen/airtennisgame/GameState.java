@@ -100,7 +100,7 @@ public class GameState {
     {
         Paint paint = new Paint();
         paint.setTextSize(40);
-        canvas.drawText("2",GameActivity.SCREEN_WIDTH-100,GameActivity.SCREEN_HEIGHT/2-100,paint);
+        canvas.drawText("3",GameActivity.SCREEN_WIDTH-100,GameActivity.SCREEN_HEIGHT/2-100,paint);
         canvas.drawText("3",GameActivity.SCREEN_WIDTH-100,GameActivity.SCREEN_HEIGHT/2+100,paint);
         paint.setTextSize(40);
         canvas.drawText("You",GameActivity.SCREEN_WIDTH-200,GameActivity.SCREEN_HEIGHT/2+100,paint);
