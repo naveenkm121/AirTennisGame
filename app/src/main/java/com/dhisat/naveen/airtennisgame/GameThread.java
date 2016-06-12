@@ -20,7 +20,7 @@ public class GameThread extends Thread {
     public GameThread(SurfaceHolder surfaceHolder, Context context, Handler handler)
     {
         this.surfaceHolder = surfaceHolder;
-        gameState = new GameState();
+        gameState = new GameState(context);
     }
 
     @Override
