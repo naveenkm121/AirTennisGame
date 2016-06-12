@@ -43,7 +43,7 @@ public class GameState {
 
     public void draw(Canvas canvas) {
         try {
-            bg.draw(canvas);
+            bg.draw(canvas,context);
             ball.draw(canvas);
             botPlayer.draw(canvas);
             myPlayer.draw(canvas);

@@ -1,5 +1,6 @@
 package com.dhisat.naveen.airtennisgame;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -21,11 +22,11 @@ public class Background{
        // image = res;
     }
 
-    public void draw(Canvas canvas){
+    public void draw(Canvas canvas, Context context){
         if(canvas!=null)
         {
             Paint myPaint = new Paint();
-            myPaint.setColor(Color.GREEN);
+            myPaint.setColor(context.getResources().getColor(R.color.light_green));
             canvas.drawRect(ObjectDimensions.ScreenXPosition, ObjectDimensions.ScreenYPosition, GameActivity.SCREEN_WIDTH-ObjectDimensions.ScreenPadding, GameActivity.SCREEN_HEIGHT-ObjectDimensions.ScreenPadding, myPaint);
 
             myPaint.setColor(Color.BLACK);

@@ -4,4 +4,68 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="black_color">#000000</color>
+    <color name="color_1">#F1EDC2</color>
+    <color name="green_2">#98FB98</color>
+    <color name="gray_2">#C0C0C0</color>
+    <color name="gray_4">#E9E9E9</color>
+    <color name="black">#000000</color>
+    <color name="black_less_opacity">#70000000</color>
+    <color name="semi_transparent">#800000</color>
+    <color name="dark_orange">#FF8C00</color>
+
+    <color name="course_add_icon">#70ac3f</color>
+    <color name="header_colors_home">#ff5f3a</color>
+    <color name="notif_home">#f85959</color>
+    <color name="blue_2">#6666FF</color>
+    <color name="lightblue">#659EC7</color>
+    <color name="border_color">#CECECE</color>
+    <color name="no_update_background">#4C4E50</color>
+    <color name="no_update_text_color">#B0B0B0</color>
+    <color name="dull_gray">#f5f5f5</color>
+
+    <color name="share_text_color">#eadfd3</color>
+    <color name="share_span_color">#43ddc3</color>
+    <color name="share_btn_color">#00ade5</color>
+    <color name="light_pink">#f88282</color>
+    <color name="dark_pink">#fb5d5e</color>
+    <color name="light_blue">#3edbee</color>
+    <color name="dark_blue">#3edbec</color>
+    <color name="light_yellow">#fbc16d</color>
+    <color name="dark_yellow">#fbc370</color>
+    <color name="lightgreen">#90EE90</color>
+    <color name="darkgreen">#347235</color>
+    <color name="lightred">#FF717E</color>
+    <color name="lightgray">#D3D3D3</color>
+    <color name="product_page">#1d354f</color>
+    <color name="off_white">#FFFEF1</color>
+    <color name="drawer_text_color">#87acc4</color>
+    <color name="drawer_background">#1e2429</color>
+    <color name="action_bar_color">#3DA0E9</color>
+    <color name="daily_updates_text_color">#655858</color>
+    <color name="light_green">#8EC272</color>
+    <color name="profile_drawer_background">#273138</color>
+    <color name="gs_color">#f58f58</color>
+    <color name="banking_color">#d9b55b</color>
+    <color name="current_affairs_color">#14a888</color>
+    <color name="banking_color_dark">#a17133</color>
+    <color name="progress_disable">#122129</color>
+    <color name="add_course">#485868</color>
+    <color name="add_course_background">#213441</color>
+    <color name="add_course_devider">#292e34</color>
+    <color name="wrong_color">#d6642f</color>
+    <color name="right_color">#92b300</color>
+    <color name="not_answered_color">#d6d6d6</color>
+    <color name="not_answered_text_color">#808080</color>
+    <color name="result_page_background">#ebebeb</color>
+    <color name="asked_button">#ed6d7c</color>
+    <color name="followed_button">#00cbde</color>
+    <color name="review_btn_color">#3D4E58</color>
+
+    <color name="drawerbackgroundblack">#151515</color>
+    <!-- color add by akshay -->
+
+    <color name="deep_sky_blue">#00BFFF</color>
+    <color name="white_smoke">#F5F5F5</color>
+    <color name="corn_flower_blue">#6495ED</color>
+    <color name="dim_gray">#696969</color>
 </resources>
