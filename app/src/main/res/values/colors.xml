@@ -16,12 +16,13 @@
     <color name="course_add_icon">#70ac3f</color>
     <color name="header_colors_home">#ff5f3a</color>
     <color name="notif_home">#f85959</color>
-    <color name="blue_2">#6666FF</color>
+    <color name="navy_blue">#6666FF</color>
     <color name="lightblue">#659EC7</color>
     <color name="border_color">#CECECE</color>
     <color name="no_update_background">#4C4E50</color>
     <color name="no_update_text_color">#B0B0B0</color>
     <color name="dull_gray">#f5f5f5</color>
+    <color name="red">#ff0000</color>
 
     <color name="share_text_color">#eadfd3</color>
     <color name="share_span_color">#43ddc3</color>
@@ -42,7 +43,6 @@
     <color name="drawer_background">#1e2429</color>
     <color name="action_bar_color">#3DA0E9</color>
     <color name="daily_updates_text_color">#655858</color>
-    <color name="light_green">#8EC272</color>
     <color name="profile_drawer_background">#273138</color>
     <color name="gs_color">#f58f58</color>
     <color name="banking_color">#d9b55b</color>
@@ -66,6 +66,7 @@
 
     <color name="deep_sky_blue">#00BFFF</color>
     <color name="white_smoke">#F5F5F5</color>
+    <color name="light_green">#00ff7f</color>
     <color name="corn_flower_blue">#6495ED</color>
     <color name="dim_gray">#696969</color>
 </resources>

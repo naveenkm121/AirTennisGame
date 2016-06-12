@@ -23,11 +23,9 @@ public class Player {
         this.yPosition = yPosition;
     }
 
-    public void draw(Canvas canvas){
+    public void draw(Canvas canvas,Paint paint){
         if(canvas!=null)
         {
-            Paint paint = new Paint();
-            paint.setColor(Color.DKGRAY);
             canvas.drawRect(new Rect(xPosition, yPosition, xPosition + ObjectDimensions.BatWidth, yPosition + ObjectDimensions.BatHeight), paint);
         }
     }

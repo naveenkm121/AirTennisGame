@@ -9,6 +9,7 @@ import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
+import android.view.animation.PathInterpolator;
 import android.widget.Toast;
 
 import com.dhisat.naveen.airtennisgame.constants.ObjectDimensions;
@@ -43,10 +44,13 @@ public class GameState {
 
     public void draw(Canvas canvas) {
         try {
+            Paint paint = new Paint();
             bg.draw(canvas,context);
             ball.draw(canvas);
-            botPlayer.draw(canvas);
-            myPlayer.draw(canvas);
+            paint.setColor(context.getResources().getColor(R.color.colorPrimary));
+            botPlayer.draw(canvas,paint);
+            paint.setColor(context.getResources().getColor(R.color.red));
+            myPlayer.draw(canvas,paint);
             updateScore(canvas);
         }catch (Exception e)
         {
