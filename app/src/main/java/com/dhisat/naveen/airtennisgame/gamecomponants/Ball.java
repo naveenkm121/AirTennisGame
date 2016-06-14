@@ -8,6 +8,7 @@ import android.graphics.Rect;
 import com.dhisat.naveen.airtennisgame.GameActivity;
 import com.dhisat.naveen.airtennisgame.GameState;
 import com.dhisat.naveen.airtennisgame.R;
+import com.dhisat.naveen.airtennisgame.constants.AppConstants;
 import com.dhisat.naveen.airtennisgame.constants.ObjectDimensions;
 import com.dhisat.naveen.airtennisgame.presenter.DebugHandler;
 
@@ -17,8 +18,8 @@ import com.dhisat.naveen.airtennisgame.presenter.DebugHandler;
 public class Ball {
     public int xPosition;
     public int yPosition;
-    public int xSpeed=6;
-    public int ySpeed=6;
+    public int xSpeed= AppConstants.BallSpeed;
+    public int ySpeed=AppConstants.BallSpeed;
     public int botScore;
     public   int myScore;
 

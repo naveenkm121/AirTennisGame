@@ -5,4 +5,6 @@ package com.dhisat.naveen.airtennisgame.constants;
  */
 public class AppConstants {
     public static final boolean EnableLogging=true;
+    public static int BallSpeed =6;
+    public static int BotBatSpeed =3;
 }

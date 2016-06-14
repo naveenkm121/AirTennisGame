@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dhisat.naveen.airtennisgame.constants.AppConstants;
 import com.dhisat.naveen.airtennisgame.presenter.DebugHandler;
 
 public class LaunchActivity extends Activity{
@@ -67,6 +68,22 @@ public class LaunchActivity extends Activity{
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 DebugHandler.Log("position"+parent.getItemAtPosition(position).toString());
+                String levelType=parent.getItemAtPosition(position).toString();
+                if(levelType.equals("Easy"))
+                {
+                    AppConstants.BallSpeed=6;
+                    AppConstants.BotBatSpeed=3;
+
+                }else if(levelType.equals("Medium"))
+                {
+                    AppConstants.BallSpeed=8;
+                    AppConstants.BotBatSpeed=5;
+                }else if(levelType.equals("Hard"))
+                {
+                    AppConstants.BallSpeed=10;
+                    AppConstants.BotBatSpeed=7;
+                }
+                dialog.dismiss();
             }});
 
 

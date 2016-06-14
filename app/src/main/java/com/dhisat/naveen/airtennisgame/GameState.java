@@ -12,6 +12,7 @@ import android.view.KeyEvent;
 import android.view.animation.PathInterpolator;
 import android.widget.Toast;
 
+import com.dhisat.naveen.airtennisgame.constants.AppConstants;
 import com.dhisat.naveen.airtennisgame.constants.ObjectDimensions;
 import com.dhisat.naveen.airtennisgame.gamecomponants.Ball;
 import com.dhisat.naveen.airtennisgame.gamecomponants.Player;
@@ -26,7 +27,7 @@ public class GameState {
     private Player botPlayer;
     private Player myPlayer;
     private Context context;
-    private int botSpeed =3;
+    private int botSpeed = AppConstants.BotBatSpeed;
 
 
     private int botXposition=(GameActivity.SCREEN_WIDTH/2)-(ObjectDimensions.BatWidth/2);
@@ -126,12 +127,5 @@ public class GameState {
         paint.setTextSize(35);
         canvas.drawText("You",GameActivity.SCREEN_WIDTH-200,GameActivity.SCREEN_HEIGHT/2+100,paint);
     }
-
-    void showDialog(final Context context)
-    {
-        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
-        alertDialog.setTitle("Alert Dialog");
-        alertDialog.setMessage("Welcome to AndroidHive.info");
-        alertDialog.show();
-    }
+    
 }
