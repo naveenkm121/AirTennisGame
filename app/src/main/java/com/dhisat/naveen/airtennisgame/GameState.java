@@ -49,22 +49,25 @@ public class GameState {
     public void draw(Canvas canvas) {
         try {
             Paint paint = new Paint();
+            DebugHandler.Log("setResume draw");
             bg.draw(canvas,context);
             updateScore(canvas);
-            paint.setColor(context.getResources().getColor(R.color.red));
+            paint.setColor(context.getResources().getColor(R.color.light_yellow));
             ball.draw(canvas,paint);
-            paint.setColor(context.getResources().getColor(R.color.colorPrimary));
+            paint.setColor(context.getResources().getColor(R.color.light_green));
             botPlayer.draw(canvas,paint);
-            paint.setColor(context.getResources().getColor(R.color.dark_orange));
+            paint.setColor(context.getResources().getColor(R.color.red));
             myPlayer.draw(canvas,paint);
-            if(botScore==ObjectDimensions.TargetScore)
-            {
-                gameResultMessage(canvas,"You lose !!!");
-            }
-            if(playerScore  == ObjectDimensions.TargetScore)
-            {
-                gameResultMessage(canvas,"You Won !!!");
-            }
+//            if(botScore==ObjectDimensions.TargetScore)
+//            {
+//                DebugHandler.Log("setResume draw 1");
+//                gameResultMessage(canvas,"You lose !!!");
+//            }
+//            if(playerScore  == ObjectDimensions.TargetScore)
+//            {
+//                DebugHandler.Log("setResume draw 2");
+//                gameResultMessage(canvas,"You Won !!!");
+//            }
         }catch (Exception e)
         {
             DebugHandler.LogException(e);
@@ -75,7 +78,7 @@ public class GameState {
     {
         try
         {
-
+            DebugHandler.Log("setResume 2");
             ball.update();
             if(ball.yPosition < GameActivity.SCREEN_HEIGHT/2 && ball.xPosition <GameActivity.SCREEN_WIDTH/2)
             {
@@ -94,10 +97,10 @@ public class GameState {
                 }
             }
             //Collisions with the bats
-            if (ball.xPosition +ObjectDimensions.BallRadius > botPlayer.xPosition && ball.xPosition-ObjectDimensions.BallRadius < botPlayer.xPosition + ObjectDimensions.BatWidth && ball.yPosition-ObjectDimensions.BallRadius < botPlayer.yPosition+ObjectDimensions.BatHeight) {
+            if (ball.xPosition  > botPlayer.xPosition && ball.xPosition < botPlayer.xPosition + ObjectDimensions.BatWidth && ball.yPosition-ObjectDimensions.BallRadius < botPlayer.yPosition+ObjectDimensions.BatHeight && ball.yPosition +ObjectDimensions.BallRadius > botPlayer.yPosition -ObjectDimensions.BatHeight) {
                 ball.ySpeed *= -1;
             }
-            if (ball.xPosition+ObjectDimensions.BallRadius  > myPlayer.xPosition && ball.xPosition-ObjectDimensions.BallRadius < myPlayer.xPosition + ObjectDimensions.BatWidth && ball.yPosition +ObjectDimensions.BallRadius > myPlayer.yPosition) {
+            if (ball.xPosition > myPlayer.xPosition && ball.xPosition < myPlayer.xPosition + ObjectDimensions.BatWidth && ball.yPosition +ObjectDimensions.BallRadius > myPlayer.yPosition && ball.yPosition +ObjectDimensions.BallRadius < myPlayer.yPosition +ObjectDimensions.BatHeight) {
                 ball.ySpeed *= -1;
             }
 
@@ -130,15 +133,17 @@ public class GameState {
 
     void updateScore(Canvas canvas)
     {
-        Paint paint = new Paint();
-        paint.setTextSize(40);
-        paint.setColor(context.getResources().getColor(R.color.banking_color_dark));
-        playerScore=ball.myScore;
-        botScore=ball.botScore;
-        canvas.drawText(ball.botScore+"",GameActivity.SCREEN_WIDTH-100,GameActivity.SCREEN_HEIGHT/2-100,paint);
-        canvas.drawText(ball.myScore+"",GameActivity.SCREEN_WIDTH-100,GameActivity.SCREEN_HEIGHT/2+100,paint);
-        paint.setTextSize(35);
-        canvas.drawText("You",GameActivity.SCREEN_WIDTH-200,GameActivity.SCREEN_HEIGHT/2+100,paint);
+        if(canvas!=null) {
+            Paint paint = new Paint();
+            paint.setTextSize(40);
+            paint.setColor(context.getResources().getColor(R.color.gray_4));
+            playerScore = ball.myScore;
+            botScore = ball.botScore;
+            canvas.drawText(ball.botScore + "", GameActivity.SCREEN_WIDTH - 100, GameActivity.SCREEN_HEIGHT / 2 - 100, paint);
+            canvas.drawText(ball.myScore + "", GameActivity.SCREEN_WIDTH - 100, GameActivity.SCREEN_HEIGHT / 2 + 100, paint);
+            paint.setTextSize(35);
+            canvas.drawText("You", GameActivity.SCREEN_WIDTH - 200, GameActivity.SCREEN_HEIGHT / 2 + 100, paint);
+        }
     }
 
     void gameResultMessage(Canvas canvas,String message)

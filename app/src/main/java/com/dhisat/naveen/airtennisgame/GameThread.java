@@ -29,35 +29,37 @@ public class GameThread extends Thread {
     public void run() {
         while (running)
         {
-           canvas=null;
-            try
-            {
-                canvas = this.surfaceHolder.lockCanvas();
-                synchronized (surfaceHolder) {
-                    if(gameState.botScore== ObjectDimensions.TargetScore)
-                    {
-                        setRunning(false);
+
+                canvas = null;
+                try {
+                    canvas = this.surfaceHolder.lockCanvas();
+                    synchronized (surfaceHolder) {
+                        if (gameState.botScore == ObjectDimensions.TargetScore) {
+                            gameState.botScore=0;
+                            gameState.playerScore=0;
+                        }
+                        if (gameState.playerScore == ObjectDimensions.TargetScore) {
+                            gameState.playerScore=0;
+                            gameState.botScore=0;
+                        }
+                        DebugHandler.Log("setResume 1");
+                        gameState.update();
+                        gameState.draw(canvas);
                     }
-                    if(gameState.playerScore==ObjectDimensions.TargetScore)
-                    {
-                        setRunning(false);
-                    }
-                    gameState.update();
-                    gameState.draw(canvas);
+
+                } catch (Exception e) {
+                    DebugHandler.LogException(e);
                 }
-            } catch (Exception e) {
-                DebugHandler.LogException(e);
-            }
-            finally {
-                if(canvas!=null)
-                {
-                    try {
-                        surfaceHolder.unlockCanvasAndPost(canvas);
-                    }catch (Exception e)
+                finally {
+                    if(canvas!=null)
                     {
-                        DebugHandler.LogException(e);
+                        try {
+                            surfaceHolder.unlockCanvasAndPost(canvas);
+                        }catch (Exception e)
+                        {
+                            DebugHandler.LogException(e);
+                        }
                     }
-                }
             }
         }
     }

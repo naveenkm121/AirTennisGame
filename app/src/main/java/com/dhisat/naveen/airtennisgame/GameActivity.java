@@ -10,6 +10,7 @@ import android.view.WindowManager;
 public class GameActivity extends Activity  {
     public static int SCREEN_HEIGHT;
     public static int SCREEN_WIDTH;
+    protected GameView gameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,7 @@ public class GameActivity extends Activity  {
         Display display = getWindowManager().getDefaultDisplay();
         SCREEN_WIDTH= display.getWidth();  // deprecated
         SCREEN_HEIGHT = display.getHeight();  //
-        setContentView(new GameView(this));
+        gameView = new GameView(this);
+        setContentView(gameView);
     }
 }

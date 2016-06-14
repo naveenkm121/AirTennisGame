@@ -26,10 +26,10 @@ public class Background{
         if(canvas!=null)
         {
             Paint myPaint = new Paint();
-            myPaint.setColor(context.getResources().getColor(R.color.light_green));
+            myPaint.setColor(context.getResources().getColor(R.color.darkgreen));
             canvas.drawRect(ObjectDimensions.ScreenXPosition, ObjectDimensions.ScreenYPosition, GameActivity.SCREEN_WIDTH-ObjectDimensions.ScreenPadding, GameActivity.SCREEN_HEIGHT-ObjectDimensions.ScreenPadding, myPaint);
 
-            myPaint.setColor(Color.BLACK);
+            myPaint.setColor(Color.WHITE);
             myPaint.setStrokeWidth(6f);
             int middleY= GameActivity.SCREEN_HEIGHT/2;
             int middleX= GameActivity.SCREEN_WIDTH/2;
@@ -39,8 +39,10 @@ public class Background{
 
             myPaint.setStyle(Paint.Style.STROKE);
             myPaint.setStrokeWidth(6f);
-            myPaint.setColor(Color.WHITE);
+            myPaint.setColor(context.getResources().getColor(R.color.white));
             canvas.drawRect(ObjectDimensions.ScreenXPosition, ObjectDimensions.ScreenYPosition, GameActivity.SCREEN_WIDTH-ObjectDimensions.ScreenPadding, GameActivity.SCREEN_HEIGHT-ObjectDimensions.ScreenPadding, myPaint);
+
+        //    canvas.drawCircle(GameActivity.SCREEN_WIDTH/2,GameActivity.SCREEN_HEIGHT/2, ObjectDimensions.BackgroundBallRadius,myPaint);
         }
     }
 }

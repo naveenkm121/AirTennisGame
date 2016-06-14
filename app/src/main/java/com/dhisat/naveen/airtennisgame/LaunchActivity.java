@@ -3,6 +3,7 @@ package com.dhisat.naveen.airtennisgame;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -22,6 +23,7 @@ public class LaunchActivity extends Activity{
 
     private TextView play_tv;
     private TextView level_tv;
+    private MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,9 @@ public class LaunchActivity extends Activity{
         play_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                stopPlaying();
+                mp = MediaPlayer.create(LaunchActivity.this, R.raw.ball_hitting_sound);
+                mp.start();
                 Intent intent = new Intent(LaunchActivity.this,GameActivity.class);
                 startActivity(intent);
             }
@@ -88,5 +92,12 @@ public class LaunchActivity extends Activity{
 
 
     dialog.show();
+    }
+    private void stopPlaying() {
+        if (mp != null) {
+            mp.stop();
+            mp.release();
+            mp = null;
+        }
     }
 }
