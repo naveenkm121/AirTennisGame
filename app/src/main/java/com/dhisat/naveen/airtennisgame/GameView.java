@@ -1,6 +1,7 @@
 package com.dhisat.naveen.airtennisgame;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -11,14 +12,16 @@ import com.dhisat.naveen.airtennisgame.presenter.DebugHandler;
 /**
  * Created by naveen on 11/6/16.
  */
-public class GameView extends SurfaceView implements SurfaceHolder.Callback  {
+public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
 
     private GameThread gameThread;
     private int clickXposition,clickYposition;
+    private Context context;
     public GameView(Context context)
     {
         super(context);
+        this.context = context;
         SurfaceHolder holder = getHolder();
         holder.addCallback(this);
         setFocusable(false);
@@ -64,12 +67,17 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback  {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                clickXposition = (int)event.getX();
-                clickYposition =(int) event.getY();
-                DebugHandler.Log("click positions"+clickXposition +"::"+clickYposition);
-                return gameThread.getGameState().getClickPositions(clickXposition,clickYposition);
+                if(gameThread.getRunning()) {
+                    clickXposition = (int) event.getX();
+                    clickYposition = (int) event.getY();
+                    return gameThread.getGameState().getClickPositions(clickXposition, clickYposition);
+                }else{
+                    DebugHandler.Log("you lost the gamne");
+
+                }
             default:
                 return false;
         }
     }
+
 }

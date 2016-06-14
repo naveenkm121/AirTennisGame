@@ -34,8 +34,8 @@ public class Background{
             int middleY= GameActivity.SCREEN_HEIGHT/2;
             int middleX= GameActivity.SCREEN_WIDTH/2;
             canvas.drawLine(ObjectDimensions.ScreenXPosition, middleY, GameActivity.SCREEN_WIDTH-ObjectDimensions.ScreenPadding, middleY, myPaint);
-            myPaint.setStrokeWidth(3f);
-            canvas.drawLine(middleX, ObjectDimensions.ScreenYPosition, middleX, GameActivity.SCREEN_HEIGHT-ObjectDimensions.ScreenPadding, myPaint);
+//            myPaint.setStrokeWidth(3f);
+//            canvas.drawLine(middleX, ObjectDimensions.ScreenYPosition, middleX, GameActivity.SCREEN_HEIGHT-ObjectDimensions.ScreenPadding, myPaint);
 
             myPaint.setStyle(Paint.Style.STROKE);
             myPaint.setStrokeWidth(6f);

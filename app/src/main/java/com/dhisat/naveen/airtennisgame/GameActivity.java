@@ -7,7 +7,7 @@ import android.view.Display;
 import android.view.Window;
 import android.view.WindowManager;
 
-public class GameActivity extends Activity {
+public class GameActivity extends Activity  {
     public static int SCREEN_HEIGHT;
     public static int SCREEN_WIDTH;
 

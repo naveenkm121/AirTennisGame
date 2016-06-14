@@ -11,4 +11,5 @@ public class ObjectDimensions {
     public static int ScreenXPosition=10;
     public static  int ScreenYPosition=20;
     public static int PlayerYPadding=70;
+    public static int TargetScore=6;
 }

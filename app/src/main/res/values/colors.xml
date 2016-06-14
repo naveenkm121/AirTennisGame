@@ -17,6 +17,12 @@
     <color name="dark_orange">#FF8C00</color>
     <color name="accentColor">#0C7BC1</color>
 
+    <color name="dialog_title_color">@color/accentColor</color>
+    <color name="dialog_positive__btncolor">@color/accentColor</color>
+    <color name="dialog_negative__btncolor">@color/accentColor</color>
+    <color name="dialog_cancel__btncolor">@color/accentColor</color>
+    <color name="dialog_message_color">#323330</color>
+
     <color name="course_add_icon">#70ac3f</color>
     <color name="header_colors_home">#ff5f3a</color>
     <color name="notif_home">#f85959</color>

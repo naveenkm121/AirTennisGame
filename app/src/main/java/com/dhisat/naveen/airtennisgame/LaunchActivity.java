@@ -81,7 +81,7 @@ public class LaunchActivity extends Activity{
                 }else if(levelType.equals("Hard"))
                 {
                     AppConstants.BallSpeed=10;
-                    AppConstants.BotBatSpeed=7;
+                    AppConstants.BotBatSpeed=6;
                 }
                 dialog.dismiss();
             }});

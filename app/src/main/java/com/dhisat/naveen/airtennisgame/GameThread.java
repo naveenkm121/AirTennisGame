@@ -2,10 +2,10 @@ package com.dhisat.naveen.airtennisgame;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.os.Handler;
 import android.view.SurfaceHolder;
 
+import com.dhisat.naveen.airtennisgame.constants.ObjectDimensions;
 import com.dhisat.naveen.airtennisgame.presenter.DebugHandler;
 
 /**
@@ -14,13 +14,15 @@ import com.dhisat.naveen.airtennisgame.presenter.DebugHandler;
 public class GameThread extends Thread {
     private SurfaceHolder surfaceHolder;
     private GameState gameState;
-    private boolean running;
+    public boolean running;
     public static Canvas canvas;
+    private Context context;
 
     public GameThread(SurfaceHolder surfaceHolder, Context context, Handler handler)
     {
         this.surfaceHolder = surfaceHolder;
         gameState = new GameState(context);
+        this.context = context;
     }
 
     @Override
@@ -32,6 +34,14 @@ public class GameThread extends Thread {
             {
                 canvas = this.surfaceHolder.lockCanvas();
                 synchronized (surfaceHolder) {
+                    if(gameState.botScore== ObjectDimensions.TargetScore)
+                    {
+                        setRunning(false);
+                    }
+                    if(gameState.playerScore==ObjectDimensions.TargetScore)
+                    {
+                        setRunning(false);
+                    }
                     gameState.update();
                     gameState.draw(canvas);
                 }
@@ -59,6 +69,10 @@ public class GameThread extends Thread {
     public void setRunning(boolean b)
     {
         running=b;
+    }
+    public boolean getRunning()
+    {
+        return running;
     }
 
 

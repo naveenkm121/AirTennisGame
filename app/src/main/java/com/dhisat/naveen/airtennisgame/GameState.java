@@ -28,6 +28,9 @@ public class GameState {
     private Player myPlayer;
     private Context context;
     private int botSpeed = AppConstants.BotBatSpeed;
+    public int playerScore;
+    public int botScore;
+
 
 
     private int botXposition=(GameActivity.SCREEN_WIDTH/2)-(ObjectDimensions.BatWidth/2);
@@ -47,13 +50,21 @@ public class GameState {
         try {
             Paint paint = new Paint();
             bg.draw(canvas,context);
+            updateScore(canvas);
             paint.setColor(context.getResources().getColor(R.color.red));
             ball.draw(canvas,paint);
             paint.setColor(context.getResources().getColor(R.color.colorPrimary));
             botPlayer.draw(canvas,paint);
             paint.setColor(context.getResources().getColor(R.color.dark_orange));
             myPlayer.draw(canvas,paint);
-            updateScore(canvas);
+            if(botScore==ObjectDimensions.TargetScore)
+            {
+                gameResultMessage(canvas,"You lose !!!");
+            }
+            if(playerScore  == ObjectDimensions.TargetScore)
+            {
+                gameResultMessage(canvas,"You Won !!!");
+            }
         }catch (Exception e)
         {
             DebugHandler.LogException(e);
@@ -71,7 +82,7 @@ public class GameState {
                 botPlayer.xPosition=botPlayer.xPosition-botSpeed;
                 if(botPlayer.xPosition<ObjectDimensions.ScreenXPosition)
                 {
-                    botPlayer.xPosition =ObjectDimensions.ScreenXPosition+5;
+                    botPlayer.xPosition =ObjectDimensions.ScreenXPosition+botSpeed;
                 }
             }
             if(ball.yPosition < GameActivity.SCREEN_HEIGHT/2 && ball.xPosition >GameActivity.SCREEN_WIDTH/2)
@@ -83,10 +94,10 @@ public class GameState {
                 }
             }
             //Collisions with the bats
-            if (ball.xPosition -ObjectDimensions.BallRadius > botPlayer.xPosition && ball.xPosition+ObjectDimensions.BallRadius < botPlayer.xPosition + ObjectDimensions.BatWidth && ball.yPosition-ObjectDimensions.BallRadius < botPlayer.yPosition+ObjectDimensions.BatHeight) {
+            if (ball.xPosition +ObjectDimensions.BallRadius > botPlayer.xPosition && ball.xPosition-ObjectDimensions.BallRadius < botPlayer.xPosition + ObjectDimensions.BatWidth && ball.yPosition-ObjectDimensions.BallRadius < botPlayer.yPosition+ObjectDimensions.BatHeight) {
                 ball.ySpeed *= -1;
             }
-            if (ball.xPosition-ObjectDimensions.BallRadius  > myPlayer.xPosition && ball.xPosition+ObjectDimensions.BallRadius < myPlayer.xPosition + ObjectDimensions.BatWidth && ball.yPosition +ObjectDimensions.BallRadius > myPlayer.yPosition) {
+            if (ball.xPosition+ObjectDimensions.BallRadius  > myPlayer.xPosition && ball.xPosition-ObjectDimensions.BallRadius < myPlayer.xPosition + ObjectDimensions.BatWidth && ball.yPosition +ObjectDimensions.BallRadius > myPlayer.yPosition) {
                 ball.ySpeed *= -1;
             }
 
@@ -122,10 +133,25 @@ public class GameState {
         Paint paint = new Paint();
         paint.setTextSize(40);
         paint.setColor(context.getResources().getColor(R.color.banking_color_dark));
+        playerScore=ball.myScore;
+        botScore=ball.botScore;
         canvas.drawText(ball.botScore+"",GameActivity.SCREEN_WIDTH-100,GameActivity.SCREEN_HEIGHT/2-100,paint);
         canvas.drawText(ball.myScore+"",GameActivity.SCREEN_WIDTH-100,GameActivity.SCREEN_HEIGHT/2+100,paint);
         paint.setTextSize(35);
         canvas.drawText("You",GameActivity.SCREEN_WIDTH-200,GameActivity.SCREEN_HEIGHT/2+100,paint);
     }
-    
+
+    void gameResultMessage(Canvas canvas,String message)
+    {
+        Paint paint = new Paint();
+        bg.draw(canvas,context);
+        paint.setTextSize(100);
+        paint.setColor(context.getResources().getColor(R.color.dark_orange));
+        canvas.drawText(message,100,GameActivity.SCREEN_HEIGHT/2-40,paint);
+        paint.setColor(context.getResources().getColor(R.color.colorPrimary));
+        botPlayer.draw(canvas,paint);
+        paint.setColor(context.getResources().getColor(R.color.dark_orange));
+        myPlayer.draw(canvas,paint);
+    }
+
 }
