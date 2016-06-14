@@ -5,19 +5,41 @@
     android:layout_height="match_parent"
     android:background="@drawable/launch"
     tools:context="com.dhisat.naveen.airtennisgame.LaunchActivity">
-    <TextView
-        android:id="@+id/playBtn"
-        android:layout_centerInParent="true"
-        android:background="@color/colorPrimary"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_marginTop="@dimen/margin140"
+        android:layout_centerHorizontal="true"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:text="Play"
-       android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="@color/white_smoke"/>
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/playBtn"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Play"
+            android:paddingLeft="@dimen/padding50"
+            android:paddingRight="@dimen/padding20"
+            android:paddingTop="@dimen/padding10"
+            android:paddingBottom="@dimen/padding10"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white_smoke"/>
+        <TextView
+            android:id="@+id/game_level"
+            android:layout_marginTop="@dimen/margin20"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Level"
+            android:paddingLeft="@dimen/padding50"
+            android:paddingRight="@dimen/padding20"
+            android:paddingTop="@dimen/padding10"
+            android:paddingBottom="@dimen/padding10"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white_smoke"/>
+
+    </LinearLayout>
+
 
 </RelativeLayout>

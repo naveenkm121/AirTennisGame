@@ -4,14 +4,18 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="black_color">#000000</color>
+    <color name="gray_3">#DCDCDC</color>
+    <color name="home_background">#E6E9EC</color>
     <color name="color_1">#F1EDC2</color>
     <color name="green_2">#98FB98</color>
     <color name="gray_2">#C0C0C0</color>
     <color name="gray_4">#E9E9E9</color>
     <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
     <color name="black_less_opacity">#70000000</color>
     <color name="semi_transparent">#800000</color>
     <color name="dark_orange">#FF8C00</color>
+    <color name="accentColor">#0C7BC1</color>
 
     <color name="course_add_icon">#70ac3f</color>
     <color name="header_colors_home">#ff5f3a</color>

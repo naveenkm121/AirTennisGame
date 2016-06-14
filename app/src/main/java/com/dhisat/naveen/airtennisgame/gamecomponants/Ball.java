@@ -7,6 +7,7 @@ import android.graphics.Rect;
 
 import com.dhisat.naveen.airtennisgame.GameActivity;
 import com.dhisat.naveen.airtennisgame.GameState;
+import com.dhisat.naveen.airtennisgame.R;
 import com.dhisat.naveen.airtennisgame.constants.ObjectDimensions;
 import com.dhisat.naveen.airtennisgame.presenter.DebugHandler;
 
@@ -54,11 +55,9 @@ public class Ball {
         }
     }
 
-    public void draw(Canvas canvas){
+    public void draw(Canvas canvas,Paint paint){
         if(canvas!=null)
         {
-            Paint paint = new Paint();
-            paint.setColor(Color.RED);
            // canvas.drawRect(new Rect(xPosition, yPosition, xPosition + ballRadius, yPosition + ballRadius), paint);
             canvas.drawCircle(xPosition,yPosition, ObjectDimensions.BallRadius,paint);
         }

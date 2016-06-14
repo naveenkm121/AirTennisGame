@@ -46,10 +46,11 @@ public class GameState {
         try {
             Paint paint = new Paint();
             bg.draw(canvas,context);
-            ball.draw(canvas);
+            paint.setColor(context.getResources().getColor(R.color.red));
+            ball.draw(canvas,paint);
             paint.setColor(context.getResources().getColor(R.color.colorPrimary));
             botPlayer.draw(canvas,paint);
-            paint.setColor(context.getResources().getColor(R.color.red));
+            paint.setColor(context.getResources().getColor(R.color.dark_orange));
             myPlayer.draw(canvas,paint);
             updateScore(canvas);
         }catch (Exception e)
@@ -119,9 +120,10 @@ public class GameState {
     {
         Paint paint = new Paint();
         paint.setTextSize(40);
+        paint.setColor(context.getResources().getColor(R.color.banking_color_dark));
         canvas.drawText(ball.botScore+"",GameActivity.SCREEN_WIDTH-100,GameActivity.SCREEN_HEIGHT/2-100,paint);
         canvas.drawText(ball.myScore+"",GameActivity.SCREEN_WIDTH-100,GameActivity.SCREEN_HEIGHT/2+100,paint);
-        paint.setTextSize(40);
+        paint.setTextSize(35);
         canvas.drawText("You",GameActivity.SCREEN_WIDTH-200,GameActivity.SCREEN_HEIGHT/2+100,paint);
     }
 
