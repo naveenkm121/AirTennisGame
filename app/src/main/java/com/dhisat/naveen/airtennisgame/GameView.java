@@ -2,6 +2,7 @@ package com.dhisat.naveen.airtennisgame;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -15,9 +16,10 @@ import com.dhisat.naveen.airtennisgame.presenter.DebugHandler;
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
 
-    private GameThread gameThread;
+    public  GameThread gameThread;
     private int clickXposition,clickYposition;
     private Context context;
+    private MediaPlayer mediaPlayer;
     public GameView(Context context)
     {
         super(context);

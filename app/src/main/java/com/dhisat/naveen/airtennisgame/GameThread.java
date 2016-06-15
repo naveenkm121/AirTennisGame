@@ -34,17 +34,24 @@ public class GameThread extends Thread {
                 try {
                     canvas = this.surfaceHolder.lockCanvas();
                     synchronized (surfaceHolder) {
-                        if (gameState.botScore == ObjectDimensions.TargetScore) {
+                        if (gameState.botScore == ObjectDimensions.TargetScore || gameState.playerScore==ObjectDimensions.TargetScore) {
+                            if(gameState.botScore == ObjectDimensions.TargetScore )
+                            {
+                                gameState.gameResultMessage(canvas,"You Lose !!!");
+
+                            }else{
+                                gameState.gameResultMessage(canvas,"You Won !!!");
+                            }
                             gameState.botScore=0;
                             gameState.playerScore=0;
+                            running=false;
+
+                        }else
+                        {
+                            DebugHandler.Log("game target score");
+                            gameState.update();
+                            gameState.draw(canvas);
                         }
-                        if (gameState.playerScore == ObjectDimensions.TargetScore) {
-                            gameState.playerScore=0;
-                            gameState.botScore=0;
-                        }
-                        DebugHandler.Log("setResume 1");
-                        gameState.update();
-                        gameState.draw(canvas);
                     }
 
                 } catch (Exception e) {

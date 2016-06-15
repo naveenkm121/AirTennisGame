@@ -23,7 +23,7 @@ public class LaunchActivity extends Activity{
 
     private TextView play_tv;
     private TextView level_tv;
-    private MediaPlayer mp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +34,7 @@ public class LaunchActivity extends Activity{
         play_tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stopPlaying();
-                mp = MediaPlayer.create(LaunchActivity.this, R.raw.ball_hitting_sound);
-                mp.start();
+              //  stopPlaying();
                 Intent intent = new Intent(LaunchActivity.this,GameActivity.class);
                 startActivity(intent);
             }
@@ -77,27 +75,23 @@ public class LaunchActivity extends Activity{
                 {
                     AppConstants.BallSpeed=6;
                     AppConstants.BotBatSpeed=3;
+                    AppConstants.PlayerBatSpeed=5;
 
                 }else if(levelType.equals("Medium"))
                 {
                     AppConstants.BallSpeed=8;
                     AppConstants.BotBatSpeed=5;
+                    AppConstants.PlayerBatSpeed=7;
                 }else if(levelType.equals("Hard"))
                 {
                     AppConstants.BallSpeed=10;
                     AppConstants.BotBatSpeed=6;
+                    AppConstants.PlayerBatSpeed=10;
                 }
                 dialog.dismiss();
             }});
 
 
     dialog.show();
-    }
-    private void stopPlaying() {
-        if (mp != null) {
-            mp.stop();
-            mp.release();
-            mp = null;
-        }
     }
 }

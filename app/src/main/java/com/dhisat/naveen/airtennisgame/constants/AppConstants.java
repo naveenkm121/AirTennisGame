@@ -7,4 +7,5 @@ public class AppConstants {
     public static final boolean EnableLogging=true;
     public static int BallSpeed =6;
     public static int BotBatSpeed =3;
+    public static int PlayerBatSpeed =3;
 }

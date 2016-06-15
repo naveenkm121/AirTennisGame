@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
 import android.view.animation.PathInterpolator;
@@ -30,6 +31,7 @@ public class GameState {
     private int botSpeed = AppConstants.BotBatSpeed;
     public int playerScore;
     public int botScore;
+    public MediaPlayer mp;
 
 
 
@@ -43,31 +45,27 @@ public class GameState {
         ball = new Ball(GameActivity.SCREEN_WIDTH/2,GameActivity.SCREEN_HEIGHT/2);
         botPlayer = new Player(botXposition,ObjectDimensions.PlayerYPadding);
         myPlayer = new Player(myPlayerXposition,myPlayerYposition);
+        mp = MediaPlayer.create(context,R.raw.ball_hitting_sound);
     }
 
 
     public void draw(Canvas canvas) {
         try {
             Paint paint = new Paint();
-            DebugHandler.Log("setResume draw");
             bg.draw(canvas,context);
-            updateScore(canvas);
+            if(playerScore == ObjectDimensions.TargetScore || botScore==ObjectDimensions.TargetScore)
+            {
+
+            }else{
+                updateScore(canvas);
+            }
             paint.setColor(context.getResources().getColor(R.color.light_yellow));
             ball.draw(canvas,paint);
             paint.setColor(context.getResources().getColor(R.color.light_green));
             botPlayer.draw(canvas,paint);
             paint.setColor(context.getResources().getColor(R.color.red));
             myPlayer.draw(canvas,paint);
-//            if(botScore==ObjectDimensions.TargetScore)
-//            {
-//                DebugHandler.Log("setResume draw 1");
-//                gameResultMessage(canvas,"You lose !!!");
-//            }
-//            if(playerScore  == ObjectDimensions.TargetScore)
-//            {
-//                DebugHandler.Log("setResume draw 2");
-//                gameResultMessage(canvas,"You Won !!!");
-//            }
+
         }catch (Exception e)
         {
             DebugHandler.LogException(e);
@@ -78,7 +76,6 @@ public class GameState {
     {
         try
         {
-            DebugHandler.Log("setResume 2");
             ball.update();
             if(ball.yPosition < GameActivity.SCREEN_HEIGHT/2 && ball.xPosition <GameActivity.SCREEN_WIDTH/2)
             {
@@ -97,11 +94,13 @@ public class GameState {
                 }
             }
             //Collisions with the bats
-            if (ball.xPosition  > botPlayer.xPosition && ball.xPosition < botPlayer.xPosition + ObjectDimensions.BatWidth && ball.yPosition-ObjectDimensions.BallRadius < botPlayer.yPosition+ObjectDimensions.BatHeight && ball.yPosition +ObjectDimensions.BallRadius > botPlayer.yPosition -ObjectDimensions.BatHeight) {
+            if (ball.xPosition +ObjectDimensions.BallRadius > botPlayer.xPosition && ball.xPosition-ObjectDimensions.BallRadius < botPlayer.xPosition + ObjectDimensions.BatWidth && ball.yPosition-ObjectDimensions.BallRadius < botPlayer.yPosition+ObjectDimensions.BatHeight && ball.yPosition +ObjectDimensions.BallRadius > botPlayer.yPosition) {
                 ball.ySpeed *= -1;
+                mp.start();
             }
-            if (ball.xPosition > myPlayer.xPosition && ball.xPosition < myPlayer.xPosition + ObjectDimensions.BatWidth && ball.yPosition +ObjectDimensions.BallRadius > myPlayer.yPosition && ball.yPosition +ObjectDimensions.BallRadius < myPlayer.yPosition +ObjectDimensions.BatHeight) {
+            if (ball.xPosition+ObjectDimensions.BallRadius  > myPlayer.xPosition && ball.xPosition-ObjectDimensions.BallRadius < myPlayer.xPosition + ObjectDimensions.BatWidth && ball.yPosition +ObjectDimensions.BallRadius > myPlayer.yPosition && ball.yPosition +ObjectDimensions.BallRadius < myPlayer.yPosition +ObjectDimensions.BatHeight) {
                 ball.ySpeed *= -1;
+                mp.start();
             }
 
         }catch (Exception e)
@@ -116,7 +115,7 @@ public class GameState {
                 myPlayer.xPosition = myPlayer.xPosition - myPlayer.batSpeed;
                 if(myPlayer.xPosition<ObjectDimensions.ScreenXPosition)
                 {
-                    myPlayer.xPosition =ObjectDimensions.ScreenXPosition+5;
+                    myPlayer.xPosition =ObjectDimensions.ScreenXPosition+AppConstants.PlayerBatSpeed;
                 }
             }
             else if(xPosition > (GameActivity.SCREEN_WIDTH/2)){
@@ -148,14 +147,19 @@ public class GameState {
 
     void gameResultMessage(Canvas canvas,String message)
     {
+        botScore=0;
+        playerScore=0;
         Paint paint = new Paint();
         bg.draw(canvas,context);
         paint.setTextSize(100);
         paint.setColor(context.getResources().getColor(R.color.dark_orange));
-        canvas.drawText(message,100,GameActivity.SCREEN_HEIGHT/2-40,paint);
-        paint.setColor(context.getResources().getColor(R.color.colorPrimary));
-        botPlayer.draw(canvas,paint);
+        canvas.drawText(message,100,GameActivity.SCREEN_HEIGHT/2-90,paint);
+        paint.setTextSize(40);
         paint.setColor(context.getResources().getColor(R.color.dark_orange));
+        canvas.drawText("Please go back to play new Game",80,GameActivity.SCREEN_HEIGHT/2-20,paint);
+        paint.setColor(context.getResources().getColor(R.color.light_green));
+        botPlayer.draw(canvas,paint);
+        paint.setColor(context.getResources().getColor(R.color.red));
         myPlayer.draw(canvas,paint);
     }
 
