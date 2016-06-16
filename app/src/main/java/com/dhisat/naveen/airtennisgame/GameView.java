@@ -1,5 +1,6 @@
 package com.dhisat.naveen.airtennisgame;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -32,8 +33,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         try {
-            gameThread.setRunning(true);
-            gameThread.start();
+            if(gameThread!=null) {
+                gameThread.setRunning(true);
+                gameThread.start();
+            }
         }catch (Exception e)
         {
             DebugHandler.LogException(e);
@@ -47,6 +50,47 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
+        boolean retry = true;
+        if(gameThread!=null) {
+            while (retry) {
+                try {
+                    gameThread.setRunning(false);
+                    gameThread.join();
+                    retry = false;
+                    gameThread = null;
+                } catch (Exception e) {
+                    DebugHandler.LogException(e);
+                }
+            }
+        }
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                if(gameThread!=null) {
+                    if (gameThread.getRunning()) {
+                        clickXposition = (int) event.getX();
+                        clickYposition = (int) event.getY();
+                        return gameThread.getGameState().getClickPositions(clickXposition, clickYposition);
+                    } else {
+                        stopThread();
+                        DebugHandler.Log("you lost the gamne");
+                        Intent intent = new Intent(context,LaunchActivity.class);
+                        context.startActivity(intent);
+
+
+                    }
+                }
+            default:
+                return false;
+        }
+    }
+
+    public void stopThread()
+    {
         boolean retry = true;
         while(retry)
         {
@@ -64,22 +108,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                if(gameThread.getRunning()) {
-                    clickXposition = (int) event.getX();
-                    clickYposition = (int) event.getY();
-                    return gameThread.getGameState().getClickPositions(clickXposition, clickYposition);
-                }else{
-                    DebugHandler.Log("you lost the gamne");
-
-                }
-            default:
-                return false;
-        }
-    }
-
 }
+
+

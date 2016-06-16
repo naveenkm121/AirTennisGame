@@ -5,8 +5,11 @@
     <dimen name="margin10">10dp</dimen>
     <dimen name="margin20">20dp</dimen>
     <dimen name="margin50">50dp</dimen>
+    <dimen name="margin30">30dp</dimen>
     <dimen name="margin100">100dp</dimen>
+    <dimen name="margin120">120dp</dimen>
     <dimen name="margin140">140dp</dimen>
+    <dimen name="margin150">150dp</dimen>
     <dimen name="padding10">10dp</dimen>
     <dimen name="padding20">20dp</dimen>
     <dimen name="padding50">50dp</dimen>

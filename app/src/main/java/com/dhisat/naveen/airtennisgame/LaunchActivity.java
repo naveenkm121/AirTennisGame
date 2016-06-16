@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,20 +19,34 @@ import android.widget.Toast;
 
 import com.dhisat.naveen.airtennisgame.constants.AppConstants;
 import com.dhisat.naveen.airtennisgame.presenter.DebugHandler;
+import com.dhisat.naveen.airtennisgame.presenter.SharedCommon;
 
 public class LaunchActivity extends Activity{
 
-    private TextView play_tv;
-    private TextView level_tv;
+    private ImageView play_imv;
+    private ImageView level_imv;
+    private ImageView speaker_on_imv;
+    private ImageView speaker_off_imv;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
-        play_tv = (TextView)findViewById(R.id.playBtn);
-        level_tv = (TextView)findViewById(R.id.game_level);
-        play_tv.setOnClickListener(new View.OnClickListener() {
+        play_imv = (ImageView)findViewById(R.id.playBtn);
+        level_imv = (ImageView)findViewById(R.id.game_level);
+        speaker_off_imv = (ImageView)findViewById(R.id.speaker_off);
+        speaker_on_imv = (ImageView)findViewById(R.id.speaker_on);
+
+//        if(SharedCommon.getSpeakerState(LaunchActivity.this).equals("On"))
+//        {
+//            speaker_off_imv.setVisibility(View.GONE);
+//            speaker_on_imv.setVisibility(View.VISIBLE);
+//        }else{
+//            speaker_on_imv.setVisibility(View.GONE);
+//            speaker_off_imv.setVisibility(View.VISIBLE);
+//        }
+        play_imv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
               //  stopPlaying();
@@ -39,13 +54,33 @@ public class LaunchActivity extends Activity{
                 startActivity(intent);
             }
         });
-        level_tv.setOnClickListener(new View.OnClickListener() {
+        level_imv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 showGameLevelDialog();
             }
         });
+
+        speaker_off_imv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                speaker_off_imv.setVisibility(View.GONE);
+                speaker_on_imv.setVisibility(View.VISIBLE);
+                SharedCommon.setSpeakerState(LaunchActivity.this,"Off");
+
+            }
+        });
+        speaker_on_imv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                speaker_on_imv.setVisibility(View.GONE);
+                speaker_off_imv.setVisibility(View.VISIBLE);
+                SharedCommon.setSpeakerState(LaunchActivity.this,"On");
+
+            }
+        });
+
     }
 
 
@@ -73,18 +108,18 @@ public class LaunchActivity extends Activity{
                 String levelType=parent.getItemAtPosition(position).toString();
                 if(levelType.equals("Easy"))
                 {
-                    AppConstants.BallSpeed=6;
+                    AppConstants.BallSpeed=7;
                     AppConstants.BotBatSpeed=3;
                     AppConstants.PlayerBatSpeed=5;
 
                 }else if(levelType.equals("Medium"))
                 {
-                    AppConstants.BallSpeed=8;
+                    AppConstants.BallSpeed=10;
                     AppConstants.BotBatSpeed=5;
                     AppConstants.PlayerBatSpeed=7;
                 }else if(levelType.equals("Hard"))
                 {
-                    AppConstants.BallSpeed=10;
+                    AppConstants.BallSpeed=12;
                     AppConstants.BotBatSpeed=6;
                     AppConstants.PlayerBatSpeed=10;
                 }

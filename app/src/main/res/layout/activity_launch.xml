@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/launch"
+    android:background="@drawable/bg"
     tools:context="com.dhisat.naveen.airtennisgame.LaunchActivity">
 
     <LinearLayout
@@ -11,48 +11,56 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <TextView
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="AIR TENNIS "
-            android:textSize="35sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"/>
+            android:src="@drawable/air_tennis_title"/>
 
     </LinearLayout>
     <LinearLayout
-        android:layout_marginTop="@dimen/margin140"
+        android:id="@+id/options_ly"
+        android:layout_marginTop="@dimen/margin150"
         android:layout_centerHorizontal="true"
-        android:layout_width="160dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <TextView
+        <ImageView
             android:id="@+id/playBtn"
-            android:background="@color/colorPrimaryDark"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PLAY"
-            android:paddingLeft="@dimen/padding50"
-            android:paddingRight="@dimen/padding20"
-            android:paddingTop="@dimen/padding10"
-            android:paddingBottom="@dimen/padding10"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"/>
-        <TextView
+            android:src="@drawable/play"/>
+        <ImageView
+            android:layout_marginTop="@dimen/margin10"
             android:id="@+id/game_level"
-            android:background="@color/colorPrimaryDark"
-            android:layout_marginTop="@dimen/margin20"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LEVEL"
-            android:paddingLeft="@dimen/padding50"
-            android:paddingRight="@dimen/padding20"
-            android:paddingTop="@dimen/padding10"
-            android:paddingBottom="@dimen/padding10"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"/>
+            android:src="@drawable/level"/>
+        <ImageView
+            android:layout_marginTop="@dimen/margin10"
+            android:id="@+id/game_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/score"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="@dimen/margin20"
+        android:layout_marginLeft="@dimen/margin20"
+        android:layout_marginRight="@dimen/margin20"
+        android:layout_below="@+id/options_ly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/speaker_on"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/speaker_icon"/>
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/speaker_off"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:src="@drawable/speaker_off"/>
 
     </LinearLayout>
 

@@ -18,6 +18,7 @@ import com.dhisat.naveen.airtennisgame.constants.ObjectDimensions;
 import com.dhisat.naveen.airtennisgame.gamecomponants.Ball;
 import com.dhisat.naveen.airtennisgame.gamecomponants.Player;
 import com.dhisat.naveen.airtennisgame.presenter.DebugHandler;
+import com.dhisat.naveen.airtennisgame.presenter.SharedCommon;
 
 /**
  * Created by naveen on 11/6/16.
@@ -31,7 +32,7 @@ public class GameState {
     private int botSpeed = AppConstants.BotBatSpeed;
     public int playerScore;
     public int botScore;
-    public MediaPlayer mp;
+    public MediaPlayer mediaPlayer;
 
 
 
@@ -42,10 +43,10 @@ public class GameState {
     public GameState(Context context) {
         this.context = context;
         bg = new Background();
-        ball = new Ball(GameActivity.SCREEN_WIDTH/2,GameActivity.SCREEN_HEIGHT/2);
+        ball = new Ball(context,GameActivity.SCREEN_WIDTH/2,GameActivity.SCREEN_HEIGHT/2);
         botPlayer = new Player(botXposition,ObjectDimensions.PlayerYPadding);
         myPlayer = new Player(myPlayerXposition,myPlayerYposition);
-        mp = MediaPlayer.create(context,R.raw.ball_hitting_sound);
+        mediaPlayer = MediaPlayer.create(context,R.raw.ball_hitting_sound);
     }
 
 
@@ -96,11 +97,15 @@ public class GameState {
             //Collisions with the bats
             if (ball.xPosition +ObjectDimensions.BallRadius > botPlayer.xPosition && ball.xPosition-ObjectDimensions.BallRadius < botPlayer.xPosition + ObjectDimensions.BatWidth && ball.yPosition-ObjectDimensions.BallRadius < botPlayer.yPosition+ObjectDimensions.BatHeight && ball.yPosition +ObjectDimensions.BallRadius > botPlayer.yPosition) {
                 ball.ySpeed *= -1;
-                mp.start();
+                if(SharedCommon.getSpeakerState(context).equals("On")) {
+                    mediaPlayer.start();
+                }
             }
             if (ball.xPosition+ObjectDimensions.BallRadius  > myPlayer.xPosition && ball.xPosition-ObjectDimensions.BallRadius < myPlayer.xPosition + ObjectDimensions.BatWidth && ball.yPosition +ObjectDimensions.BallRadius > myPlayer.yPosition && ball.yPosition +ObjectDimensions.BallRadius < myPlayer.yPosition +ObjectDimensions.BatHeight) {
                 ball.ySpeed *= -1;
-                mp.start();
+                if(SharedCommon.getSpeakerState(context).equals("On")) {
+                    mediaPlayer.start();
+                }
             }
 
         }catch (Exception e)
@@ -150,17 +155,29 @@ public class GameState {
         botScore=0;
         playerScore=0;
         Paint paint = new Paint();
-        bg.draw(canvas,context);
-        paint.setTextSize(100);
+        //bg.draw(canvas,context);
+        Paint myPaint = new Paint();
+
+
+
+//        paint.setColor(context.getResources().getColor(R.color.light_green));
+//        botPlayer.draw(canvas,paint);
+//        paint.setColor(context.getResources().getColor(R.color.red));
+//        myPlayer.draw(canvas,paint);
+        myPaint.setColor(context.getResources().getColor(R.color.black));
+        canvas.drawRect(ObjectDimensions.ScreenXPosition, ObjectDimensions.ScreenYPosition, GameActivity.SCREEN_WIDTH-ObjectDimensions.ScreenPadding, GameActivity.SCREEN_HEIGHT-ObjectDimensions.ScreenPadding, myPaint);
+        paint.setTextSize(60);
         paint.setColor(context.getResources().getColor(R.color.dark_orange));
-        canvas.drawText(message,100,GameActivity.SCREEN_HEIGHT/2-90,paint);
+        canvas.drawText(message,GameActivity.SCREEN_WIDTH/2-230,GameActivity.SCREEN_HEIGHT/2-90,paint);
         paint.setTextSize(40);
         paint.setColor(context.getResources().getColor(R.color.dark_orange));
-        canvas.drawText("Please go back to play new Game",80,GameActivity.SCREEN_HEIGHT/2-20,paint);
+        canvas.drawText("Do you want to give challenge?  ",80,GameActivity.SCREEN_HEIGHT/2-20,paint);
         paint.setColor(context.getResources().getColor(R.color.light_green));
-        botPlayer.draw(canvas,paint);
-        paint.setColor(context.getResources().getColor(R.color.red));
-        myPlayer.draw(canvas,paint);
+        canvas.drawCircle(GameActivity.SCREEN_WIDTH-120,GameActivity.SCREEN_HEIGHT-120, 60,paint);
+        paint.setColor(context.getResources().getColor(R.color.colorPrimary));
+        paint.setTextSize(30);
+        paint.setTypeface(Typeface.DEFAULT_BOLD);
+        canvas.drawText("OK",GameActivity.SCREEN_WIDTH-140,GameActivity.SCREEN_HEIGHT-110,paint);
     }
 
 }
