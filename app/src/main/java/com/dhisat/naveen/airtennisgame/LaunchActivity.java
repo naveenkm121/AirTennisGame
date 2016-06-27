@@ -52,6 +52,7 @@ public class LaunchActivity extends Activity{
               //  stopPlaying();
                 Intent intent = new Intent(LaunchActivity.this,GameActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         level_imv.setOnClickListener(new View.OnClickListener() {
@@ -114,12 +115,12 @@ public class LaunchActivity extends Activity{
 
                 }else if(levelType.equals("Medium"))
                 {
-                    AppConstants.BallSpeed=10;
+                    AppConstants.BallSpeed=9;
                     AppConstants.BotBatSpeed=5;
                     AppConstants.PlayerBatSpeed=7;
                 }else if(levelType.equals("Hard"))
                 {
-                    AppConstants.BallSpeed=12;
+                    AppConstants.BallSpeed=11;
                     AppConstants.BotBatSpeed=6;
                     AppConstants.PlayerBatSpeed=10;
                 }
