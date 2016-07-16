@@ -26,6 +26,7 @@ public class Ball {
     public int botScore;
     public   int myScore;
     private MediaPlayer mediaPlayer;
+    private MediaPlayer ballhitPlayer;
     private Context context;
 
     public Ball(Context context,int xPosition, int yPosition)
@@ -36,6 +37,7 @@ public class Ball {
         botScore=0;
         myScore=0;
         mediaPlayer = MediaPlayer.create(context,R.raw.miss_ball);
+        ballhitPlayer = MediaPlayer.create(context,R.raw.ball_hitting_sound);
     }
 
     public void update() {
@@ -64,6 +66,9 @@ public class Ball {
 
         }
         if (xPosition > (GameActivity.SCREEN_WIDTH-ObjectDimensions.ScreenPadding-ObjectDimensions.BallRadius) || xPosition < (ObjectDimensions.ScreenXPosition+ObjectDimensions.BallRadius)) {
+            if(SharedCommon.getSpeakerState(context).equals("On")) {
+                ballhitPlayer.start();
+            }
             xSpeed *= -1;
         }
     }

@@ -29,7 +29,7 @@ public class GameThread extends Thread {
     public void run() {
         while (running)
         {
-
+            DebugHandler.Log("running :: ::");
                 canvas = null;
                 try {
                     canvas = this.surfaceHolder.lockCanvas();
@@ -77,6 +77,7 @@ public class GameThread extends Thread {
     }
     public void setRunning(boolean b)
     {
+        DebugHandler.Log("running ::"+b);
         running=b;
     }
     public boolean getRunning()
