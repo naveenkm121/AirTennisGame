@@ -51,7 +51,9 @@ public class LaunchActivity extends Activity{
 
         try {
             mAdView = (AdView) findViewById(R.id.adView);
-            AdRequest adRequest = new AdRequest.Builder().build();
+            AdRequest adRequest = new AdRequest.Builder()
+                    .addTestDevice("12B047CF6C1D6F232725AEB8D0A7C44F")
+                    .build();
             mAdView.loadAd(adRequest);
         }catch (Exception e)
         {
