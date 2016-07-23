@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     style="@style/padding16"
-    android:background="@color/gray_3"
+    android:background="@color/black_50_opacity"
     android:id="@+id/zeroDataLayout"
     android:layout_height="wrap_content">
 
@@ -27,15 +27,6 @@
             android:layout_height="wrap_content"/>
 
     </RelativeLayout>
-
-    <TextView
-        android:id="@+id/cancel_btn"
-        android:layout_below="@+id/dynamicLayoutType"
-        android:layout_marginTop="@dimen/margin10"
-        style="@style/dialogBtnStyle"
-        android:textAllCaps="true"
-        android:layout_alignParentRight="true"
-        android:text="Cancel" />
 
 
 

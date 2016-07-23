@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "788391583432",
+    "firebase_url": "https://airtennisgame.firebaseio.com",
+    "project_id": "airtennisgame",
+    "storage_bucket": "airtennisgame.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788391583432:android:69bd2603268240f9",
+        "android_client_info": {
+          "package_name": "com.dhisat.naveen.airtennisgame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "788391583432-csc44vq0qqsu398d809il564bac9ok1i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5fOBKkaP7muoOSmXCz2VcoYox09n0mPg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

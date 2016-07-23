@@ -57,8 +57,8 @@
     <color name="profile_drawer_background">#273138</color>
     <color name="gs_color">#f58f58</color>
     <color name="banking_color">#d9b55b</color>
-    <color name="current_affairs_color">#14a888</color>
-    <color name="banking_color_dark">#a17133</color>
+    <color name="dark_green">#14a888</color>
+    <color name="brown">#a17133</color>
     <color name="progress_disable">#122129</color>
     <color name="add_course">#485868</color>
     <color name="add_course_background">#213441</color>

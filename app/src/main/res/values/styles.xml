@@ -15,7 +15,7 @@
         <item name="android:textColor">@color/accentColor</item>
     </style>
     <style name="txt_17_medium" parent="txt_medium">
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">21sp</item>
     </style>
     <style name="txt_medium">
         <item name="android:textStyle">bold</item>
