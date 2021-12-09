@@ -74,5 +74,28 @@ public class DepartmentTest {
 		
 
 	}
+	
+	@Test
+	public void deleteTest() {
+		
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("MyJPA");
+		System.out.println("entityManagerFactory ::"+entityManagerFactory);
+		
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		System.out.println("Entity Managaer ::"+entityManager);
+		
+		EntityTransaction entityTransaction = entityManager.getTransaction();
+		entityTransaction.begin();
+			Department department = entityManager.find(Department.class, 99);
+			System.out.println("Dept No "+department.getDepartmentNumber());
+			System.out.println("Dept Name "+department.getDepartmentName());
+			System.out.println("Dept Location "+department.getDepartmentLocation());
+			
+			
+		entityManager.remove(department);
+		entityTransaction.commit();
+		
+
+	}
 
 }
