@@ -1,101 +1,33 @@
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-
-import org.junit.jupiter.api.Test;
-
-public class DepartmentTest {
-
-	public DepartmentTest() {
-		// TODO Auto-generated constructor stub
+@RestController
+@RequestMapping("/flight")
+public class FlightController {
+	
+	@Autowired
+	FlightService flightService;
+	
+	
+	@RequestMapping("/greet")
+	public String greeting() {
+		
+		return "<h1>Welcome  To Flight </h1>";
 	}
 	
-	@Test
-	public void insertTest() {
+	
+	@RequestMapping("/insert")
+	public String insert() {
 		
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("MyJPA");
-		System.out.println("entityManagerFactory ::"+entityManagerFactory);
-		
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		System.out.println("Entity Managaer ::"+entityManager);
-		
-		EntityTransaction entityTransaction = entityManager.getTransaction();
-		entityTransaction.begin();
-		Department department = new Department();
-		department.setDepartmentNumber(69);
-		department.setDepartmentName("Java Training");
-		department.setDepartmentLocation("MDC");
-		entityManager.persist(department);
-		entityTransaction.commit();
-		
-
+		return "<h1>Please insert flight model </h1>";
 	}
 	
-	@Test
-	public void selectTest() {
+	
+	@RequestMapping("/getFlights")
+	public List<Flight> getAllFlights() {
 		
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("MyJPA");
-		System.out.println("entityManagerFactory ::"+entityManagerFactory);
-		
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		System.out.println("Entity Managaer ::"+entityManager);
-		
-		
-		Department department = entityManager.find(Department.class, 50);
-		System.out.println("Dept No "+department.getDepartmentNumber());
-		System.out.println("Dept Name "+department.getDepartmentName());
-		System.out.println("Dept Location "+department.getDepartmentLocation());
-		
-		
-
+		return flightService.getAvailableFlightService();
 	}
 	
-	@Test
-	public void updateTest() {
-		
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("MyJPA");
-		System.out.println("entityManagerFactory ::"+entityManagerFactory);
-		
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		System.out.println("Entity Managaer ::"+entityManager);
-		
-		EntityTransaction entityTransaction = entityManager.getTransaction();
-		entityTransaction.begin();
-			Department department = entityManager.find(Department.class, 50);
-			System.out.println("Dept No "+department.getDepartmentNumber());
-			System.out.println("Dept Name "+department.getDepartmentName());
-			System.out.println("Dept Location "+department.getDepartmentLocation());
-			
-			department.setDepartmentName("Python Training");
-			department.setDepartmentLocation("SDC");
-		entityManager.merge(department);
-		entityTransaction.commit();
-		
-
-	}
 	
-	@Test
-	public void deleteTest() {
-		
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("MyJPA");
-		System.out.println("entityManagerFactory ::"+entityManagerFactory);
-		
-		EntityManager entityManager = entityManagerFactory.createEntityManager();
-		System.out.println("Entity Managaer ::"+entityManager);
-		
-		EntityTransaction entityTransaction = entityManager.getTransaction();
-		entityTransaction.begin();
-			Department department = entityManager.find(Department.class, 99);
-			System.out.println("Dept No "+department.getDepartmentNumber());
-			System.out.println("Dept Name "+department.getDepartmentName());
-			System.out.println("Dept Location "+department.getDepartmentLocation());
-			
-			
-		entityManager.remove(department);
-		entityTransaction.commit();
-		
-
-	}
+	
+	
 
 }
